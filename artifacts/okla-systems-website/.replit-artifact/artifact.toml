@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "OKLA Systems Website"
+description = "A responsive corporate website for OKLA 1ST GEN K Systems & Projects, presenting integrated IT, engineering, operational technology, project management, and skills development services across South Africa."
+version = "1.0.0"
+id = "artifacts/okla-systems-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21954
+
+[services.development]
+run = "pnpm --filter @workspace/okla-systems-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/okla-systems-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/okla-systems-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21954"
+BASE_PATH = "/"
