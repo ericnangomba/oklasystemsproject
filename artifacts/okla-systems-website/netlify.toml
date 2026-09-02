@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build"
-  publish = "dist"
+  command = "cd artifacts/okla-systems-website && npm run build"
+  publish = "artifacts/okla-systems-website/dist/public"
 
 [[redirects]]
   from = "/*"

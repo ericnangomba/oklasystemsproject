@@ -8,6 +8,7 @@ import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 const rawPort = process.env.PORT || '3000';
 const port = Number(rawPort);
 const basePath = process.env.BASE_PATH || '/';
+const isBuild = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   base: basePath,
@@ -47,8 +48,8 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    port,
-    strictPort: true,
+    port: isBuild ? undefined : port,
+    strictPort: !isBuild,
     host: '0.0.0.0',
     allowedHosts: true,
     fs: {
@@ -56,7 +57,7 @@ export default defineConfig({
     },
   },
   preview: {
-    port,
+    port: isBuild ? undefined : port,
     host: '0.0.0.0',
     allowedHosts: true,
   },
