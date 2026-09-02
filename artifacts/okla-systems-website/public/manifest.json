@@ -9,13 +9,13 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/oklalogo.jfif",
+      "src": "/oklalogo%20(2).jfif",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "/oklalogo.jfif",
+      "src": "/oklalogo%20(2).jfif",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
