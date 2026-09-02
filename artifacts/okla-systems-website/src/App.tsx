@@ -4,21 +4,21 @@ import { Link, Route, Switch, useLocation, Router as WouterRouter } from 'wouter
 
 const divisions = [
   {
-    index: '01 / DIGITAL',
+    index: 'DIGITAL',
     title: 'IT, Cyber & Network Systems',
     description: 'The digital backbone for resilient, connected operations — from systems integration and cybersecurity to recovery and proactive support.',
     icon: Network,
     href: '/services#technology',
   },
   {
-    index: '02 / INDUSTRIAL',
+    index: 'INDUSTRIAL',
     title: 'Engineering & Operational Technology',
     description: 'Bridging the physical and digital with Industrial Control Systems, SCADA, infrastructure optimisation and technical consulting.',
     icon: Factory,
     href: '/services#engineering',
   },
   {
-    index: '03 / DELIVERY',
+    index: 'DELIVERY',
     title: 'Project Management & Supply Chain',
     description: 'Clear accountability from concept to commissioning, with strategic procurement, logistics and lifecycle management built in.',
     icon: Boxes,
@@ -29,7 +29,6 @@ const divisions = [
 const serviceGroups = [
   {
     id: 'technology',
-    number: '01',
     title: 'Technology & Digital Infrastructure',
     description: 'Make every system speak the same language. We design the connective tissue that keeps your people, platforms and critical assets moving.',
     icon: Network,
@@ -42,7 +41,6 @@ const serviceGroups = [
   },
   {
     id: 'engineering',
-    number: '02',
     title: 'Engineering & Operational Technology',
     description: 'Operational excellence begins where engineering judgement meets live data. We help industrial environments become more visible, maintainable and ready for what is next.',
     icon: CircuitBoard,
@@ -53,7 +51,6 @@ const serviceGroups = [
   },
   {
     id: 'delivery',
-    number: '03',
     title: 'Project Management & Logistics',
     description: 'Complex programmes need one accountable line through the middle. We bring structure, visibility and momentum from first brief to handover.',
     icon: FileCheck2,
@@ -64,7 +61,6 @@ const serviceGroups = [
   },
   {
     id: 'capacity',
-    number: '04',
     title: 'Capacity Building',
     description: 'The most durable infrastructure is carried by capable people. We invest in knowledge transfer that keeps value in the teams and communities we serve.',
     icon: HardHat,
@@ -111,8 +107,9 @@ function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   const isActive = (path: string) => path === '/' ? location === '/' : location.startsWith(path);
+  const isDarkPage = location !== '/' && !scrolled;
   return (
-    <header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
+    <header className={`site-header ${scrolled ? 'scrolled' : ''} ${isDarkPage ? 'on-dark' : ''}`}>
       <div className="site-container header-row">
         <Link href="/" onClick={() => setOpen(false)} data-testid="link-brand-home"><Brand /></Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -180,6 +177,10 @@ function SignalCard() {
         <div className="signal-stat"><strong>04</strong><span>capability areas</span></div>
         <div className="signal-stat"><strong>01</strong><span>accountable partner</span></div>
       </div>
+      <div className="signal-cta">
+        <p>End-to-end systems integration</p>
+        <Link href="/services" className="btn btn-orange btn-sm">Explore <ArrowUpRight size={12} /></Link>
+      </div>
     </div>
   );
 }
@@ -189,6 +190,7 @@ function Home() {
     <>
       <main>
         <section className="hero">
+          <div className="hero-tech-bg" />
           <div className="site-container hero-layout">
             <div>
               <Reveal><div className="eyebrow">South Africa / Systems & projects</div></Reveal>
@@ -220,10 +222,24 @@ function Home() {
             <Reveal><div className="trust-intro"><div className="eyebrow">The OKLA difference</div><h2 className="display">Built to hold<br /><em>the whole picture.</em></h2><p>We bring the rigour of engineering, the precision of technology and the discipline of delivery to one table — then keep the conversation clear.</p></div></Reveal>
             <div className="trust-list">
               {[
-                ['01', 'End-to-end delivery', 'From concept and procurement to commissioning and maintenance, we handle the entire project lifecycle.'],
-                ['02', 'Deep industry expertise', 'Seasoned engineers, consultants and project managers bring proven methodologies to every challenge.'],
-                ['03', 'Empowerment focused', 'We build more than systems. Skills development and South African transformation are part of the brief.'],
-              ].map(([number, title, text], index) => <Reveal key={number} delay={`delay-${index + 1}`}><div className="trust-item" data-testid={`item-trust-${index + 1}`}><span className="trust-number">{number}</span><div><h3>{title}</h3><p>{text}</p></div></div></Reveal>)}
+                ['End-to-end delivery', 'From concept and procurement to commissioning and maintenance, we handle the entire project lifecycle.'],
+                ['Deep industry expertise', 'Seasoned engineers, consultants and project managers bring proven methodologies to every challenge.'],
+                ['Empowerment focused', 'We build more than systems. Skills development and South African transformation are part of the brief.'],
+              ].map(([title, text], index) => <Reveal key={title} delay={`delay-${index + 1}`}><div className="trust-item" data-testid={`item-trust-${index + 1}`}><div><h3>{title}</h3><p>{text}</p></div></div></Reveal>)}
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="site-container">
+            <Reveal><div className="section-heading"><div><div className="eyebrow">Trusted across industries</div><h2 className="display">Proven results.<br /><em>Real impact.</em></h2></div><p>Our track record speaks for itself. We deliver measurable outcomes that transform operations and drive sustainable growth.</p></div></Reveal>
+            <div className="metrics-grid">
+              {[
+                { value: '50+', label: 'Projects Delivered' },
+                { value: '15+', label: 'Years Experience' },
+                { value: '98%', label: 'Client Satisfaction' },
+                { value: '24/7', label: 'Support Available' },
+              ].map((metric, index) => <Reveal key={index} delay={`delay-${index + 1}`}><div className="metric-card" data-testid={`metric-${index}`}><strong className="metric-value">{metric.value}</strong><span className="metric-label">{metric.label}</span></div></Reveal>)}
             </div>
           </div>
         </section>
@@ -245,13 +261,12 @@ function PageHero({ eyebrow, title, children }: { eyebrow: string; title: ReactN
 
 function Services() {
   return (
-    <main>
+    <main className="services-hero">
       <PageHero eyebrow="Capabilities / 04 areas" title={<>Comprehensive solutions<br /><em>across industries.</em></>}>Whether you need to secure your digital assets, integrate complex industrial controls or manage a large-scale engineering project, OKLA has the expertise to deliver.</PageHero>
       <section className="section">
         <div className="site-container">
           {serviceGroups.map((group, index) => {
-            const Icon = group.icon;
-            return <Reveal key={group.id} delay={index ? `delay-${Math.min(index, 3)}` : ''}><article id={group.id} className="capability" data-testid={`section-service-${group.id}`}><span className="cap-num">{group.number} / 04</span><div><Icon size={27} strokeWidth={1.4} color="hsl(163 36% 31%)" /><h2>{group.title}</h2></div><div className="cap-detail"><p>{group.description}</p><div className="detail-list">{group.services.map(([name, detail]) => <div key={name}><Check size={14} /> <span><strong>{name}</strong> — {detail}</span></div>)}</div></div></article></Reveal>;
+            return <Reveal key={group.id} delay={index ? `delay-${Math.min(index, 3)}` : ''}><article id={group.id} className="capability" data-testid={`section-service-${group.id}`}><h2>{group.title}</h2><div className="cap-detail"><p>{group.description}</p><div className="detail-list">{group.services.map(([name, detail]) => <div key={name}><Check size={14} /> <span><strong>{name}</strong> — {detail}</span></div>)}</div></div></article></Reveal>;
           })}
         </div>
       </section>
@@ -259,7 +274,7 @@ function Services() {
         <div className="site-container method">
           <Reveal><div className="method-intro"><div className="eyebrow">How we deliver</div><h2 className="display">Method is<br /><em>momentum.</em></h2><p>Good work is not a hand-off. It is a disciplined line from the first question to the outcome that lasts.</p></div></Reveal>
           <div className="method-list">
-            {[['01', 'Understand the system', 'We start with context: your operating environment, constraints, people and the outcome that matters.'], ['02', 'Design the connection', 'Our teams map the technical, commercial and delivery path before the work begins.'], ['03', 'Deliver with visibility', 'Clear milestones, accountable ownership and communication that keeps decisions moving.'], ['04', 'Leave capability behind', 'The result is yours to operate — with knowledge transfer, training and support built in.']].map(([num, title, text], index) => <Reveal key={num} delay={`delay-${Math.min(index + 1, 3)}`}><div className="method-row" data-testid={`row-method-${num}`}><span>{num}</span><div><h3>{title}</h3><p>{text}</p></div></div></Reveal>)}
+            {[['Understand the system', 'We start with context: your operating environment, constraints, people and the outcome that matters.'], ['Design the connection', 'Our teams map the technical, commercial and delivery path before the work begins.'], ['Deliver with visibility', 'Clear milestones, accountable ownership and communication that keeps decisions moving.'], ['Leave capability behind', 'The result is yours to operate — with knowledge transfer, training and support built in.']].map(([title, text], index) => <Reveal key={title} delay={`delay-${Math.min(index + 1, 3)}`}><div className="method-row" data-testid={`row-method-${index}`}><div><h3>{title}</h3><p>{text}</p></div></div></Reveal>)}
           </div>
         </div>
       </section>
@@ -269,7 +284,7 @@ function Services() {
 
 function About() {
   return (
-    <main>
+    <main className="about-hero">
       <PageHero eyebrow="About OKLA / Our authority" title={<>Building the future<br /><em>of South African industry.</em></>}>We operate at the intersection of a rapidly evolving technological and industrial landscape — delivering the systems that help South African businesses move with confidence.</PageHero>
       <section className="section">
         <div className="site-container about-layout">
@@ -281,14 +296,19 @@ function About() {
         <div className="site-container">
           <Reveal><div className="section-heading"><div><div className="eyebrow">The OKLA commitment</div><h2 className="display">Progress is<br /><em>people-shaped.</em></h2></div><p>Transformation is not an appendix to the work. It is part of how we measure whether the work was worth doing.</p></div></Reveal>
           <div className="values-grid">
-            {[['01', 'Employment equity & SA transformation', 'Driving meaningful change in South Africa’s economic landscape.'], ['02', 'Diversity & inclusion', 'Fostering a workplace that reflects the diverse communities we serve.'], ['03', 'Skills development', 'Continually investing in learning to build a highly skilled, empowered workforce.'], ['04', 'Equal opportunity', 'Ensuring fair access to opportunity and merit-based growth for all.']].map(([num, title, text], index) => <Reveal key={num} delay={`delay-${Math.min(index + 1, 3)}`}><div className="value" data-testid={`card-value-${num}`}><span>{num}</span><h3>{title}</h3><p>{text}</p></div></Reveal>)}
+            {[
+              { title: 'Employment equity & SA transformation', text: 'Driving meaningful change in South Africa’s economic landscape.' },
+              { title: 'Diversity & inclusion', text: 'Fostering a workplace that reflects the diverse communities we serve.' },
+              { title: 'Skills development', text: 'Continually investing in learning to build a highly skilled, empowered workforce.' },
+              { title: 'Equal opportunity', text: 'Ensuring fair access to opportunity and merit-based growth for all.' },
+            ].map((item, index) => <Reveal key={index} delay={`delay-${Math.min(index + 1, 3)}`}><div className="value" data-testid={`card-value-${index}`}><h3>{item.title}</h3><p>{item.text}</p></div></Reveal>)}
           </div>
         </div>
       </section>
       <section className="section section-dark">
         <div className="site-container timeline">
           <Reveal><div><div className="eyebrow">A standard we keep</div><h2 className="display">Dependable<br /><em>by design.</em></h2><p>Our approach holds the technical detail and the human outcome in the same frame. That is how infrastructure becomes progress you can feel.</p></div></Reveal>
-          <div className="timeline-lines">{[['ENGINEERING', 'Rigour that respects the realities of the field.'], ['INNOVATION', 'Better ways of working, grounded in what is possible now.'], ['INTEGRITY', 'Professionalism and transparency at every decision point.'], ['IMPACT', 'A stronger business, a stronger workforce, a stronger South Africa.']].map(([name, text], index) => <Reveal key={name} delay={`delay-${Math.min(index + 1, 3)}`}><div className="timeline-line" data-testid={`row-principle-${index + 1}`}><b>0{index + 1}</b><p><strong>{name}</strong><br />{text}</p></div></Reveal>)}</div>
+          <div className="timeline-lines">{[['ENGINEERING', 'Rigour that respects the realities of the field.'], ['INNOVATION', 'Better ways of working, grounded in what is possible now.'], ['INTEGRITY', 'Professionalism and transparency at every decision point.'], ['IMPACT', 'A stronger business, a stronger workforce, a stronger South Africa.']].map(([name, text], index) => <Reveal key={name} delay={`delay-${Math.min(index + 1, 3)}`}><div className="timeline-line" data-testid={`row-principle-${index + 1}`}><p><strong>{name}</strong><br />{text}</p></div></Reveal>)}</div>
         </div>
       </section>
     </main>
@@ -317,7 +337,7 @@ function Contact() {
       <section className="section">
         <div className="site-container contact-layout">
           <Reveal><div className="contact-intro"><div className="eyebrow">Make contact</div><h2 className="display">Put the right<br /><em>people in the room.</em></h2><p>Tell us what you are working towards. We will come back with the right questions, the right expertise and a clear next step.</p><div className="contact-details"><div className="contact-detail"><Phone size={19} /><div><small>Call the team</small><a href="tel:+27812897112" data-testid="link-contact-phone">081 289 7112</a></div></div><div className="contact-detail"><Mail size={19} /><div><small>Write to us</small><a href="mailto:info@oklasystems.co.za" data-testid="link-contact-email">info@oklasystems.co.za</a></div></div></div></div></Reveal>
-          <Reveal delay="delay-2"><div className="contact-form-wrap">{submitted ? <div className="success-state" data-testid="status-form-success"><div><div className="success-icon"><Check size={25} /></div><h2>Enquiry received.</h2><p>Thank you, {values.name.split(' ')[0] || 'there'}. Our team will review the brief and be in touch soon.</p><a className="btn btn-orange" href="mailto:info@oklasystems.co.za" data-testid="link-success-email">Open your email client <Send size={14} /></a></div></div> : <><div className="form-header"><h2>Start with the brief.</h2><span>01 / 04</span></div><form onSubmit={submit} noValidate data-testid="form-contact"><div className="form-grid"><div className="field"><label htmlFor="contact-name">Full name</label><input id="contact-name" value={values.name} onChange={update('name')} placeholder="Your name" data-testid="input-contact-name" />{errors.name && <span className="error-text">{errors.name}</span>}</div><div className="field"><label htmlFor="contact-email">Email address</label><input id="contact-email" type="email" value={values.email} onChange={update('email')} placeholder="you@company.co.za" data-testid="input-contact-email" />{errors.email && <span className="error-text">{errors.email}</span>}</div><div className="field"><label htmlFor="contact-phone">Phone</label><input id="contact-phone" type="tel" value={values.phone} onChange={update('phone')} placeholder="081 289 7112" data-testid="input-contact-phone" />{errors.phone && <span className="error-text">{errors.phone}</span>}</div><div className="field"><label htmlFor="contact-subject">What can we help with?</label><input id="contact-subject" value={values.subject} onChange={update('subject')} placeholder="A project, a system, a challenge" data-testid="input-contact-subject" /></div><div className="field full"><label htmlFor="contact-message-long">Message</label><textarea id="contact-message-long" value={values.message} onChange={update('message')} placeholder="Give us the useful context..." data-testid="textarea-contact-message" />{errors.message && <span className="error-text">{errors.message}</span>}</div></div><div className="form-actions"><span className="form-note">We keep your details private and only use them to respond to your enquiry.</span><button className="btn btn-orange" type="submit" data-testid="button-submit-contact">Send enquiry <ArrowRight size={15} /></button></div></form></>}</div></Reveal>
+          <Reveal delay="delay-2"><div className="contact-form-wrap">{submitted ? <div className="success-state" data-testid="status-form-success"><div><div className="success-icon"><Check size={25} /></div><h2>Enquiry received.</h2><p>Thank you, {values.name.split(' ')[0] || 'there'}. Our team will review the brief and be in touch soon.</p><a className="btn btn-orange" href="mailto:info@oklasystems.co.za" data-testid="link-success-email">Open your email client <Send size={14} /></a></div></div> : <><div className="form-header"><h2>Start with the brief.</h2></div><form onSubmit={submit} noValidate data-testid="form-contact"><div className="form-grid"><div className="field"><label htmlFor="contact-name">Full name</label><input id="contact-name" value={values.name} onChange={update('name')} placeholder="Your name" data-testid="input-contact-name" />{errors.name && <span className="error-text">{errors.name}</span>}</div><div className="field"><label htmlFor="contact-email">Email address</label><input id="contact-email" type="email" value={values.email} onChange={update('email')} placeholder="you@company.co.za" data-testid="input-contact-email" />{errors.email && <span className="error-text">{errors.email}</span>}</div><div className="field"><label htmlFor="contact-phone">Phone</label><input id="contact-phone" type="tel" value={values.phone} onChange={update('phone')} placeholder="081 289 7112" data-testid="input-contact-phone" />{errors.phone && <span className="error-text">{errors.phone}</span>}</div><div className="field"><label htmlFor="contact-subject">What can we help with?</label><input id="contact-subject" value={values.subject} onChange={update('subject')} placeholder="A project, a system, a challenge" data-testid="input-contact-subject" /></div><div className="field full"><label htmlFor="contact-message-long">Message</label><textarea id="contact-message-long" value={values.message} onChange={update('message')} placeholder="Give us the useful context..." data-testid="textarea-contact-message" />{errors.message && <span className="error-text">{errors.message}</span>}</div></div><div className="form-actions"><span className="form-note">We keep your details private and only use them to respond to your enquiry.</span><button className="btn btn-orange" type="submit" data-testid="button-submit-contact">Send enquiry <ArrowRight size={15} /></button></div></form></>}</div></Reveal>
         </div>
         <div className="site-container locations" id="locations">
           <Reveal><div className="eyebrow">Our locations</div><div className="location-grid"><div className="location" data-testid="location-gauteng"><MapPin size={18} color="hsl(18 92% 53%)" /><h3>Head Office / Gauteng</h3><p>524 Seemi Street, Mabuya Park<br />1475, South Africa</p></div><div className="location" data-testid="location-kwazulu-natal"><LocateFixed size={18} color="hsl(18 92% 53%)" /><h3>Branch Office / KwaZulu-Natal</h3><p>Tally HD Building, Unit 7<br />38 Union Street, Empangeni, 3880</p></div></div></Reveal>
