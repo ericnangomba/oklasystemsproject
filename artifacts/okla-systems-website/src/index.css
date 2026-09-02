@@ -216,5 +216,12 @@ button { cursor: pointer; }
   
   .btn { width: auto; }
   .hero-actions .btn { width: 100%; justify-content: center; }
+  
+  .desktop-nav { display: none; }
+  .header-contact { display: none; }
+  .menu-toggle { display: block; color: hsl(0 0% 100%); }
+  .mobile-nav { display: block; position: fixed; inset: 0; background: hsl(var(--primary)); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .mobile-nav.open { opacity: 1; pointer-events: auto; }
+  .mobile-nav .nav-link { font-size: 1.2rem; color: hsl(0 0% 100%); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; }.reveal { opacity:1; transform:none; transition:none; }.marquee-track { animation:none; }.btn, .nav-link, .division-card { transition:none; } }
