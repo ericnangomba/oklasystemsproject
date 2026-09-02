@@ -64,6 +64,7 @@ button { cursor: pointer; }
 .site-header.scrolled .header-contact:hover { color: hsl(var(--accent)); }
 .header-row { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 700; letter-spacing: -.03em; }
+.brand-image { height: 40px; width: auto; display: block; }
 .brand-mark { width: 32px; height: 32px; display: grid; place-items: center; background: hsl(var(--accent)); color: hsl(var(--primary)); font-size: 1.05rem; font-weight: 700; transform: skew(-9deg); }
 .brand-mark span { transform: skew(9deg); }
 .brand-word { font-size: .94rem; line-height: 1.02; max-width: 170px; }

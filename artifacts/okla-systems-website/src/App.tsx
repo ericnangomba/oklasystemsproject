@@ -90,8 +90,7 @@ function Reveal({ children, className = '', delay = '' }: { children: ReactNode;
 function Brand() {
   return (
     <span className="brand" data-testid="brand-okla">
-      <span className="brand-mark"><span>O</span></span>
-      <span className="brand-word">OKLA 1ST GEN K<small>Systems & Projects</small></span>
+      <img src="/oklalogo%20(2).jfif" alt="OKLA 1ST GEN K Systems & Projects" className="brand-image" />
     </span>
   );
 }
