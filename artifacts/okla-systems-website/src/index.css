@@ -105,7 +105,7 @@ button { cursor: pointer; }
 .btn-dark:hover { background:hsl(var(--secondary)); border-color:hsl(var(--secondary)); }
 .btn-orange { background:hsl(var(--accent)); color:hsl(var(--primary)); border-color:hsl(var(--accent)); }
 .btn-orange:hover { background:hsl(18 92% 59%); }
-.btn-ghost { border-color:hsl(var(--border)); }
+.btn-ghost { border-color:hsl(var(--border)); color: #2777b4; }
 .btn-ghost:hover { border-color:hsl(var(--primary)); background:hsl(var(--muted)); }
 
 .hero { min-height: 760px; padding: 160px 0 80px; position:relative; overflow:hidden; background: hsl(var(--primary)); }
