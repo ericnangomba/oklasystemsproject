@@ -189,10 +189,10 @@ button { cursor: pointer; }
   .site-container { width:min(100% - 32px, 620px); margin: 0 auto; text-align: center; }
   .header-row { min-height:70px; justify-content: space-between; }
   .desktop-nav, .header-contact { display:none; }
-  .menu-toggle { display:block; }
-  .mobile-nav { position:absolute; top:70px; left:0; right:0; background:hsl(0 0% 100%); border-bottom:1px solid hsl(var(--border)); padding:15px 16px 22px; box-shadow:0 15px 30px hsl(var(--primary)/.1); text-align: left; }
-  .mobile-nav.open { display:grid; gap:4px; }
-  .mobile-nav .nav-link { padding:13px 0; font-size:1rem; }
+  .menu-toggle { display:block; color: hsl(0 0% 100%); }
+  .mobile-nav { display: block; position: fixed; inset: 0; background: hsl(var(--primary)); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+  .mobile-nav.open { opacity: 1; pointer-events: auto; }
+  .mobile-nav .nav-link { padding:13px 0; font-size:1.2rem; color: hsl(0 0% 100%); }
   .mobile-nav .btn { margin-top:10px; }
   
   .hero { min-height:auto; padding:130px 0 65px; text-align: center; }
@@ -243,12 +243,5 @@ button { cursor: pointer; }
   
   .btn { width: auto; }
   .hero-actions .btn { width: 100%; justify-content: center; }
-  
-  .desktop-nav { display: none; }
-  .header-contact { display: none; }
-  .menu-toggle { display: block; color: hsl(0 0% 100%); }
-  .mobile-nav { display: block; position: fixed; inset: 0; background: hsl(var(--primary)); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 24px; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
-  .mobile-nav.open { opacity: 1; pointer-events: auto; }
-  .mobile-nav .nav-link { font-size: 1.2rem; color: hsl(0 0% 100%); }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; }.reveal { opacity:1; transform:none; transition:none; }.marquee-track { animation:none; }.btn, .nav-link, .division-card { transition:none; } }
