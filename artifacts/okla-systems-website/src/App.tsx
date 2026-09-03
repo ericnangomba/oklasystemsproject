@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent, type ReactNode } from 'react';
-import { ArrowRight, ArrowUpRight, Boxes, Check, CircuitBoard, Factory, FileCheck2, HardHat, LocateFixed, Mail, MapPin, Menu, Network, Phone, Send, X } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Boxes, Check, CircuitBoard, Factory, FileCheck2, HardHat, LocateFixed, Mail, MapPin, Menu, MessageCircle, Network, Phone, Send, X } from 'lucide-react';
 import { Link, Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const divisions = [
@@ -264,6 +264,9 @@ function Home() {
           </div>
         </section>
       </main>
+      <a href="https://wa.me/27812897112" target="_blank" rel="noopener noreferrer" className="whatsapp-float" data-testid="whatsapp-button">
+        <MessageCircle size={28} />
+      </a>
     </>
   );
 }
