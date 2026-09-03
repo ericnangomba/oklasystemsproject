@@ -249,7 +249,7 @@ function Home() {
             <div className="team-grid">
               {[
                 { name: 'Thomas Dlamini', role: 'The Director', image: '/Thomas%20Dlamini%20_The%20Director.jfif' },
-                { name: 'Musa Dlamini', role: 'Project Manager', image: '/Musa%20Dlamini%20Project%20Manager.jfif' },
+                { name: 'Musa Dlamini', role: 'Project Manager', image: '/Musa%20Dlamini%20Project%20Manager%20(2).jfif' },
                 { name: 'Anathi Cetyana', role: 'Accounts Manager', image: '/Anathi%20Cetyana%20Accounts%20Manager.jfif' },
                 { name: 'Lwazi Mdhlala', role: 'Training and Development', image: '/Lwazi%20Mdhlala%20%20Training%20and%20development.jfif' },
               ].map((member, index) => <Reveal key={index} delay={`delay-${index + 1}`}><div className="team-card" data-testid={`card-team-${index}`}><div className="team-image-wrapper"><img src={member.image} alt={member.name} className="team-image" /></div><h3>{member.name}</h3><p>{member.role}</p></div></Reveal>)}
