@@ -114,6 +114,7 @@ function Header() {
         <nav className="desktop-nav" aria-label="Primary navigation">
           <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`} data-testid="link-nav-home">Home</Link>
           <Link href="/services" className={`nav-link ${isActive('/services') ? 'active' : ''}`} data-testid="link-nav-services">Capabilities</Link>
+          <Link href="/projects" className={`nav-link ${isActive('/projects') ? 'active' : ''}`} data-testid="link-nav-projects">Projects</Link>
           <Link href="/about" className={`nav-link ${isActive('/about') ? 'active' : ''}`} data-testid="link-nav-about">Our story</Link>
           <Link href="/contact" className={`nav-link ${isActive('/contact') ? 'active' : ''}`} data-testid="link-nav-contact">Contact</Link>
         </nav>
@@ -125,6 +126,7 @@ function Header() {
       <nav className={`mobile-nav ${open ? 'open' : ''}`} aria-label="Mobile navigation">
         <Link href="/" className="nav-link" onClick={() => setOpen(false)} data-testid="link-mobile-home">Home</Link>
         <Link href="/services" className="nav-link" onClick={() => setOpen(false)} data-testid="link-mobile-services">Capabilities</Link>
+        <Link href="/projects" className="nav-link" onClick={() => setOpen(false)} data-testid="link-mobile-projects">Projects</Link>
         <Link href="/about" className="nav-link" onClick={() => setOpen(false)} data-testid="link-mobile-about">Our story</Link>
         <Link href="/contact" className="btn btn-dark" onClick={() => setOpen(false)} data-testid="link-mobile-contact">Start a conversation <ArrowUpRight size={15} /></Link>
       </nav>
@@ -144,6 +146,7 @@ function Footer() {
           <div className="footer-col">
             <h3>Explore</h3>
             <Link href="/services" data-testid="link-footer-services">Capabilities</Link>
+            <Link href="/projects" data-testid="link-footer-projects">Projects</Link>
             <Link href="/about" data-testid="link-footer-about">Our story</Link>
             <Link href="/contact" data-testid="link-footer-contact">Contact team</Link>
           </div>
@@ -331,6 +334,29 @@ function About() {
   );
 }
 
+function Projects() {
+  return (
+    <main className="projects-hero">
+      <PageHero eyebrow="Projects / Our work" title={<>Delivering results<br /><em>that matter.</em></>}>From industrial operational technology to enterprise IT systems, explore some of the projects that demonstrate our commitment to engineering excellence across South Africa.</PageHero>
+      <section className="section">
+        <div className="site-container">
+          <Reveal><div className="section-heading"><div><div className="eyebrow">Project gallery</div><h2 className="display">Our latest<br /><em>work.</em></h2></div><p>Project images will be added here. Place your project images in the public/images folder and we will update the gallery to display them.</p></div></Reveal>
+          <div className="projects-grid">
+            {[
+              { title: 'Project 1', description: 'Description coming soon', image: '/images/project1.jpg' },
+              { title: 'Project 2', description: 'Description coming soon', image: '/images/project2.jpg' },
+              { title: 'Project 3', description: 'Description coming soon', image: '/images/project3.jpg' },
+              { title: 'Project 4', description: 'Description coming soon', image: '/images/project4.jpg' },
+              { title: 'Project 5', description: 'Description coming soon', image: '/images/project5.jpg' },
+              { title: 'Project 6', description: 'Description coming soon', image: '/images/project6.jpg' },
+            ].map((project, index) => <Reveal key={index} delay={`delay-${Math.min(index + 1, 3)}`}><div className="project-card" data-testid={`card-project-${index}`}><div className="project-image-wrapper"><img src={project.image} alt={project.title} className="project-image" /></div><div className="project-content"><h3>{project.title}</h3><p>{project.description}</p></div></div></Reveal>)}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
 type FormValues = { name: string; email: string; phone: string; subject: string; message: string };
 function Contact() {
   const [values, setValues] = useState<FormValues>({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -368,7 +394,7 @@ function NotFoundPage() {
 }
 
 function Router() {
-  return <Switch><Route path="/" component={Home} /><Route path="/services" component={Services} /><Route path="/about" component={About} /><Route path="/contact" component={Contact} /><Route component={NotFoundPage} /></Switch>;
+  return <Switch><Route path="/" component={Home} /><Route path="/services" component={Services} /><Route path="/projects" component={Projects} /><Route path="/about" component={About} /><Route path="/contact" component={Contact} /><Route component={NotFoundPage} /></Switch>;
 }
 
 function App() {
