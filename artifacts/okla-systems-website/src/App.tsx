@@ -193,8 +193,8 @@ function Home() {
           <div className="site-container hero-layout">
             <div>
               <Reveal><div className="eyebrow">South Africa / Systems & projects</div></Reveal>
-              <Reveal delay="delay-1"><h1 className="display">Integrated systems for a <em>smarter future.</em></h1></Reveal>
-              <Reveal delay="delay-2"><p className="hero-copy">Delivering scalable, reliable and innovative systems across South Africa. From industrial operational technology to enterprise IT and project management, we build the infrastructure that drives your business forward.</p></Reveal>
+              <Reveal delay="delay-1"><h1 className="display">Engineering systems that <em>work for you.</em></h1></Reveal>
+              <Reveal delay="delay-2"><p className="hero-copy">We deliver integrated engineering and IT solutions across South Africa — from industrial operational technology to enterprise systems and project management. One accountable partner for your entire project lifecycle.</p></Reveal>
               <Reveal delay="delay-3"><div className="hero-actions"><Link href="/services" className="btn btn-orange" data-testid="button-explore-capabilities">Explore our capabilities <ArrowRight size={16} /></Link><Link href="/contact" className="btn btn-ghost" data-testid="button-contact-team">Contact our team <ArrowUpRight size={15} /></Link></div></Reveal>
               <div className="hero-note"><i /> <span>Engineering the link between ambition and action</span></div>
             </div>
@@ -251,7 +251,7 @@ function Home() {
                 { name: 'Thomas Dlamini', role: 'The Director', image: '/Thomas%20Dlamini%20_The%20Director.jfif' },
                 { name: 'Musa Dlamini', role: 'Project Manager', image: '/Musa%20Dlamini%20Project%20Manager%20(2).jfif' },
                 { name: 'Anathi Cetyana', role: 'Accounts Manager', image: '/Anathi%20Cetyana%20Accounts%20Manager.jfif' },
-                { name: 'Lwazi Mdhlala', role: 'Training and Development', image: '/Lwazi%20Mdhlala%20%20Training%20and%20development.jfif' },
+                { name: 'Lwazi Madhlala', role: 'Training and Development', image: '/Lwazi%20Mdhlala%20%20Training%20and%20development.jfif' },
               ].map((member, index) => <Reveal key={index} delay={`delay-${index + 1}`}><div className="team-card" data-testid={`card-team-${index}`}><div className="team-image-wrapper"><img src={member.image} alt={member.name} className="team-image" /></div><h3>{member.name}</h3><p>{member.role}</p></div></Reveal>)}
             </div>
           </div>
@@ -259,8 +259,8 @@ function Home() {
 
         <section className="section section-sand">
           <div className="site-container">
-            <Reveal><div className="section-heading"><div><div className="eyebrow">A clearer route forward</div><h2 className="display">Make complexity<br /><em>move.</em></h2></div><p>Whether you are securing critical assets, modernising a plant or launching a major programme, the first step is a useful conversation.</p></div></Reveal>
-            <Reveal delay="delay-1"><Link href="/contact" className="btn btn-dark" data-testid="button-home-enquire">Start an enquiry <ArrowUpRight size={15} /></Link></Reveal>
+            <Reveal><div className="section-heading"><div><div className="eyebrow">Ready to start?</div><h2 className="display">Let's build something<br /><em>together.</em></h2></div><p>Whether you're securing critical assets, modernising a plant or launching a major programme, the first step is a useful conversation. Reach out today.</p></div></Reveal>
+            <Reveal delay="delay-1"><div className="hero-actions"><Link href="/contact" className="btn btn-orange" data-testid="button-home-enquire">Start an enquiry <ArrowUpRight size={15} /></Link><a href="tel:+27812897112" className="btn btn-dark" data-testid="button-home-call"><Phone size={15} /> 081 289 7112</a></div></Reveal>
           </div>
         </section>
       </main>
