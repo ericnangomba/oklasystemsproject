@@ -340,15 +340,18 @@ function Projects() {
       <PageHero eyebrow="Projects / Our work" title={<>Delivering results<br /><em>that matter.</em></>}>From industrial operational technology to enterprise IT systems, explore some of the projects that demonstrate our commitment to engineering excellence across South Africa.</PageHero>
       <section className="section">
         <div className="site-container">
-          <Reveal><div className="section-heading"><div><div className="eyebrow">Project gallery</div><h2 className="display">Our latest<br /><em>work.</em></h2></div><p>Project images will be added here. Place your project images in the public/images folder and we will update the gallery to display them.</p></div></Reveal>
+          <Reveal><div className="section-heading"><div><div className="eyebrow">Project gallery</div><h2 className="display">Our latest<br /><em>work.</em></h2></div><p>From network infrastructure to office setups, explore our completed projects across South Africa.</p></div></Reveal>
           <div className="projects-grid">
             {[
-              { title: 'Project 1', description: 'Description coming soon', image: '/images/project1.jpg' },
-              { title: 'Project 2', description: 'Description coming soon', image: '/images/project2.jpg' },
-              { title: 'Project 3', description: 'Description coming soon', image: '/images/project3.jpg' },
-              { title: 'Project 4', description: 'Description coming soon', image: '/images/project4.jpg' },
-              { title: 'Project 5', description: 'Description coming soon', image: '/images/project5.jpg' },
-              { title: 'Project 6', description: 'Description coming soon', image: '/images/project6.jpg' },
+              { title: 'Network Installation & Supply', description: 'Complete network infrastructure deployment and equipment supply', image: '/Network%20Installation%20and%20Supply.jfif' },
+              { title: 'Co-operate Network Installation', description: 'Enterprise network installation with monitoring systems', image: '/Co-operate%20Network%20installation%20and%20Monitor.jfif' },
+              { title: 'Home Network Installation', description: 'Residential network setup with cabin installation', image: '/Home%20Network%20installation%20and%20cabin%20installation.jfif' },
+              { title: 'Office Setup - Cubicles', description: 'Modern office cubicle configuration and installation', image: '/Office%20set%20up%20cubicles.jfif' },
+              { title: 'Office Setup - Reception', description: 'Professional reception area design and setup', image: '/Office%20setup%20reception.jfif' },
+              { title: 'Office Setup - Executive', description: 'Executive office configuration and furnishing', image: '/Office%20setup%20exec.jfif' },
+              { title: 'Onsite Desktop Support', description: 'On-site technical support and desktop maintenance', image: '/Onsite%20Desktop%20Support.jfif' },
+              { title: 'Remote Desktop Support', description: 'Remote IT support and desktop troubleshooting', image: '/Remote%20Desktop%20Support.jfif' },
+              { title: 'Office Setup - Entrance', description: 'Office entrance design and installation', image: '/Office%20setup%20entrance.jfif' },
             ].map((project, index) => <Reveal key={index} delay={`delay-${Math.min(index + 1, 3)}`}><div className="project-card" data-testid={`card-project-${index}`}><div className="project-image-wrapper"><img src={project.image} alt={project.title} className="project-image" /></div><div className="project-content"><h3>{project.title}</h3><p>{project.description}</p></div></div></Reveal>)}
           </div>
         </div>
