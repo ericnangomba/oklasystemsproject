@@ -256,7 +256,7 @@ function Home() {
                 { name: 'AXIZ', logo: 'https://www.axiz.com/wp-content/uploads/2020/06/axiz-logo.png', fallback: 'AXIZ' },
                 { name: 'Westcon-Comstor', logo: 'https://www.westcon.com/wp-content/uploads/2021/03/Westcon-Comstor-Logo.png', fallback: 'Westcon' },
                 { name: 'Xerox', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Xerox_logo_2019.svg/200px-Xerox_logo_2019.svg.png', fallback: 'Xerox' },
-              ].map((partner, index) => <Reveal key={index} delay={`delay-${index + 1}`}><div className="partner-card" data-testid={`partner-${index}`}><img src={partner.logo} alt={partner.name} className="partner-logo" loading="lazy" onError={(e) => { const img = e.currentTarget; img.style.display = 'none'; const span = img.nextElementSibling as HTMLElement; if (span) span.style.display = 'block'; }} /><span className="partner-name" style={{ display: 'none' }}>{partner.fallback}</span></div></Reveal>)}
+              ].map((partner, index) => <Reveal key={index} delay={`delay-${index + 1}`}><div className="partner-card" data-testid={`partner-${index}`}><img src={partner.logo} alt={partner.name} className="partner-logo" loading="lazy" onError={(e) => { const img = e.currentTarget; img.style.display = 'none'; const span = img.nextElementSibling as HTMLElement; if (span) { span.style.display = 'block'; span.classList.remove('hidden'); } }} /><span className="partner-name hidden">{partner.fallback}</span></div></Reveal>)}
             </div>
           </div>
         </section>
