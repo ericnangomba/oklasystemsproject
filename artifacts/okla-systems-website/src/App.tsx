@@ -251,12 +251,12 @@ function Home() {
             <Reveal><div className="section-heading"><div><div className="eyebrow">Our partners</div><h2 className="display">Trusted by industry<br /><em>leaders.</em></h2></div><p>We partner with world-class technology providers to deliver the best solutions for our clients.</p></div></Reveal>
             <div className="partners-grid">
               {[
-                { name: 'HP', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/HP_logo_2012.svg/200px-HP_logo_2012.svg.png', fallback: 'HP' },
-                { name: 'Dell', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Dell_logo_2016.svg/200px-Dell_logo_2016.svg.png', fallback: 'Dell' },
-                { name: 'AXIZ', logo: 'https://www.axiz.com/wp-content/uploads/2020/06/axiz-logo.png', fallback: 'AXIZ' },
-                { name: 'Westcon-Comstor', logo: 'https://www.westcon.com/wp-content/uploads/2021/03/Westcon-Comstor-Logo.png', fallback: 'Westcon' },
-                { name: 'Xerox', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Xerox_logo_2019.svg/200px-Xerox_logo_2019.svg.png', fallback: 'Xerox' },
-              ].map((partner, index) => <Reveal key={index} delay={`delay-${index + 1}`}><div className="partner-card" data-testid={`partner-${index}`}><img src={partner.logo} alt={partner.name} className="partner-logo" loading="lazy" onError={(e) => { const img = e.currentTarget; img.style.display = 'none'; const span = img.nextElementSibling as HTMLElement; if (span) { span.style.display = 'block'; span.classList.remove('hidden'); } }} /><span className="partner-name hidden">{partner.fallback}</span></div></Reveal>)}
+                { name: 'HP', logo: 'https://cdn.simpleicons.org/hp/ffffff', fallback: 'HP' },
+                { name: 'Dell', logo: 'https://cdn.simpleicons.org/dell/ffffff', fallback: 'Dell' },
+                { name: 'AXIZ', logo: '', fallback: 'AXIZ' },
+                { name: 'Westcon', logo: '', fallback: 'Westcon' },
+                { name: 'Xerox', logo: 'https://cdn.simpleicons.org/xerox/ffffff', fallback: 'Xerox' },
+              ].map((partner, index) => <Reveal key={index} delay={`delay-${index + 1}`}><div className="partner-card" data-testid={`partner-${index}`}>{partner.logo ? <img src={partner.logo} alt={partner.name} className="partner-logo" loading="lazy" onError={(e) => { const img = e.currentTarget; img.style.display = 'none'; const span = img.nextElementSibling as HTMLElement; if (span) { span.style.display = 'block'; span.classList.remove('hidden'); } }} /> : null}<span className={`partner-name ${partner.logo ? 'hidden' : ''}`}>{partner.fallback}</span></div></Reveal>)}
             </div>
           </div>
         </section>
